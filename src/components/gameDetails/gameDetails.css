@@ -1,0 +1,40 @@
+a {
+  text-decoration: none;
+  color:#FFFFFFB2;
+  cursor: pointer;
+}
+
+.game-details-container {
+  padding-left: 2.8rem;
+  width: 35vw;
+  height: 100%;
+}
+
+.game-details {
+  height: 3.7rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 0.6rem;
+  color:#FFFFFFB2;
+
+}
+
+.game-detail {
+  width: 30%;
+  height: 3.7rem;
+}
+
+
+.game-detail,
+.game-detail a{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
