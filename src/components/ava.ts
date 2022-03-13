@@ -1,4 +1,4 @@
-import BaseComponent from "./baseComponent";
+import BaseComponent from './baseComponent';
 
 export default class Ava extends BaseComponent {
   constructor(parentNode:HTMLElement) {

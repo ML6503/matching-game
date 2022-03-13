@@ -11,19 +11,18 @@
 class BaseComponent<NodeType extends HTMLElement = HTMLElement> {
   public node: NodeType;
 
-
   constructor(
     parentNode: HTMLElement | null = null,
-    tag: keyof HTMLElementTagNameMap = 'div',
+    tag = 'div',
     styles: string[] = [],
-    textContent = ''
-) {
-    const element  = document.createElement(tag);
+    textContent = '',
+  ) {
+    const element = document.createElement(tag);
     element.classList.add(...styles);
-    element.textContent  = textContent;
+    element.textContent = textContent;
     parentNode && parentNode.append(element);
     this.node = element as NodeType;
-  };
+  }
 
   destroy(): void {
     this.node.remove();

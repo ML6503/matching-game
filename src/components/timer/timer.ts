@@ -1,8 +1,9 @@
 import './timer.css';
 import BaseComponent from '../baseComponent';
-import { SHOW_TIME } from '../../common/constants';
+import { FLIP_DELAY } from '../../common/constants';
+import delay from '../../common/delay';
 
-const TIMER_TIME = SHOW_TIME / 1000;
+const TIMER_START_DELAY = FLIP_DELAY;
 export default class Timer extends BaseComponent {
   private second!: number;
 
@@ -42,9 +43,9 @@ export default class Timer extends BaseComponent {
     return this.totalTime;
   }
 
-  startTimer(): void {
+  async startTimer(): Promise<void> {
     console.log('we are in startTimer');
-
+    await delay(TIMER_START_DELAY);
     this.interval = setInterval(() => {
       // this.element.innerHTML = this.minute+"mins "+  this.second+"secs";
 
@@ -54,7 +55,7 @@ export default class Timer extends BaseComponent {
         this.second = 0;
       }
       this.setTotalTime(this.minute, this.second);
-      this.second === TIMER_TIME && this.stopTimer();
+      // this.second === TIMER_START_DELAY && this.stopTimer();
       console.log('this.second', this.second);
       console.log('time sec', this.getTotalTime().seconds);
       this.node.innerHTML = `
