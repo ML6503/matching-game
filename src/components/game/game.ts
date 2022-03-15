@@ -13,11 +13,19 @@ import {
   FILTER_GREEN,
 } from '../../common/constants';
 import Timer from '../timer/timer';
+import Button from '../button';
+import RoundEndModal from '../roundEnd/roundEnd';
 
 export default class Game extends BaseComponent {
   private readonly cardsField: CardsField;
 
   private overlay: BaseComponent;
+
+  private roundEndModal: BaseComponent;
+
+  private modalButton: Button;
+
+  private roundEndMessage: BaseComponent;
 
   private timer: Timer;
 
@@ -42,6 +50,7 @@ export default class Game extends BaseComponent {
   ) {
     super(parentNode, 'div', ['game-table']);
     this.overlay = new BaseComponent(this.node, 'div', ['overlay']);
+
     this.cardsField = new CardsField(this.node);
 
     console.log('we start timer');
@@ -130,6 +139,11 @@ export default class Game extends BaseComponent {
 
     if (this.getNumberOfSuccesTries() === this._totalCardsPair) {
       this.overlay.node.style.display = 'block';
+      this.timer.pauseTimer();
+      this.roundEndModal = new RoundEndModal(
+        this.overlay.node,
+        this.timer.getTotalTime(),
+      );
     }
   }
 

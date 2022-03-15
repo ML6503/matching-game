@@ -68,12 +68,16 @@ export default class Timer extends BaseComponent {
     }, 1000);
   }
 
-  stopTimer(): void {
+  pauseTimer(): void {
     this.setTotalTime(this.minute, this.second);
-    this.second = 0;
-    this.minute = 0;
     clearInterval(this.interval);
     this.getStarted();
+  }
+
+  stopTimer(): void {
+    this.pauseTimer();
+    this.second = 0;
+    this.minute = 0;
     this.destroy();
   }
 }
