@@ -32,17 +32,16 @@
 /* Modal Content/Box */
 .modal-content {
   background-color: #ffffff;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  margin: 45% auto; /* 45% from the top and centered */
+  padding: 1rem 1rem 0.2rem;
+  width: 30%;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 0.7rem;
 }
 
 .round-end-message {
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
-  font-size: 0.7rem;
   line-height: 1rem;
   letter-spacing: 0.0125rem;
   color: rgba(0, 0, 0, 0.6);
@@ -50,15 +49,16 @@
 
 /* The Close Button */
 .modal-close-button {
-  float: right;
+  margin: 1% auto;
+  display: block;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 10%;
   background-color: #2196f3;
   color: #ffffff;
-  font-family: Roboto;
-  font-size: 0.7rem;
-  font-style: normal;
   font-weight: 500;
-  /* line-height: 0.8rem;
-      letter-spacing: 0.0625rem; */
+  line-height: 0.8rem;
+  letter-spacing: 0.0625rem;
   text-align: center;
   text-transform: uppercase;
 }

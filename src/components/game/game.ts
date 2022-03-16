@@ -13,19 +13,19 @@ import {
   FILTER_GREEN,
 } from '../../common/constants';
 import Timer from '../timer/timer';
-import Button from '../button';
+// import Button from '../button';
 import RoundEndModal from '../roundEnd/roundEnd';
 
 export default class Game extends BaseComponent {
   private readonly cardsField: CardsField;
 
-  private overlay: BaseComponent;
+  // private overlay: BaseComponent;
 
   private roundEndModal: BaseComponent;
 
-  private modalButton: Button;
+  // private modalButton: Button;
 
-  private roundEndMessage: BaseComponent;
+  // private roundEndMessage: BaseComponent;
 
   private timer: Timer;
 
@@ -49,7 +49,7 @@ export default class Game extends BaseComponent {
     setStarted: (arg0: boolean) => typeof arg0,
   ) {
     super(parentNode, 'div', ['game-table']);
-    this.overlay = new BaseComponent(this.node, 'div', ['overlay']);
+    // this.overlay = new BaseComponent(this.node, 'div', ['overlay']);
 
     this.cardsField = new CardsField(this.node);
 
@@ -138,12 +138,11 @@ export default class Game extends BaseComponent {
     this.isAnimation = false;
 
     if (this.getNumberOfSuccesTries() === this._totalCardsPair) {
-      this.overlay.node.style.display = 'block';
+      // this.overlay.node.style.display = 'block';
       this.timer.pauseTimer();
-      this.roundEndModal = new RoundEndModal(
-        this.overlay.node,
-        this.timer.getTotalTime(),
-      );
+      const totalTime = this.timer.getTotalTime();
+      console.log('Total time', totalTime);
+      this.roundEndModal = new RoundEndModal(this.node, totalTime);
     }
   }
 

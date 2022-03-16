@@ -2,27 +2,31 @@ import BaseComponent from '../baseComponent';
 import Button from '../button';
 
 export default class RoundEndModal extends BaseComponent {
+  private roundEndPopup: BaseComponent;
+
   private roundEndMessage: BaseComponent;
 
   public modalButton: Button;
 
   constructor(
     parentNode: HTMLElement,
-    totalTime: { minutes: string; seconds: string },
+    totalTime: { minutes: number; seconds: number },
   ) {
-    super(parentNode, 'div', ['modal-content']);
+    super(parentNode, 'div', ['overlay']);
     // this.roundEndModal = new BaseComponent(this.overlay.node, 'div', [
     //   'modal-content',
     // ]);
+    this.roundEndPopup = new BaseComponent(this.node, 'div', ['modal-content']);
+    this.node.style.display = 'block';
     this.roundEndMessage = new BaseComponent(
-      parentNode,
+      this.roundEndPopup.node,
       'p',
       ['round-end-message'],
-      `Congratulations! You successfully found all matches on ${totalTime} minutes.`,
+      `Congratulations! You successfully found all matches on ${totalTime.minutes}.${totalTime.seconds} minutes.`,
     );
-    this.modalButton = new Button(this.node, 'modal-close', 'ok');
+    this.modalButton = new Button(this.roundEndPopup.node, 'modal-close', 'ok');
     this.modalButton.onClick = () => {
-      // parentNode.style.display = 'none';
+      this.node.style.display = 'none';
     };
   }
 }
