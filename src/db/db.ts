@@ -1,12 +1,12 @@
 let db;
-const newUser = [
-  {
-    name: '',
-    lastName: '',
-    email: '',
-    score: 0,
-  },
-];
+// const newUser = [
+//   {
+//     name: '',
+//     lastName: '',
+//     email: '',
+//     score: 0,
+//   },
+// ];
 
 function displayUsersData() {
   // first clear the content of the users list so that we don't get
@@ -65,45 +65,49 @@ window.onload = function () {
   };
 };
 
-function addData(e) {
-  // prevent default - we don't want the form to submit in the conventional way
-  e.preventDefault();
+// function addData(e) {
+//   // prevent default - we don't want the form to submit in the conventional way
+//   e.preventDefault();
 
-  // open a read/write db transaction, ready for adding the data
-  const transaction = db.transaction(['toDoList'], 'readwrite');
+//   // open a read/write db transaction, ready for adding the data
+//   const transaction = db.transaction(['toDoList'], 'readwrite');
 
-  // report on the success of the transaction completing, when everything is done
-  transaction.oncomplete = function () {
-    console.log('Transaction completed: database modification finished.');
+//   // report on the success of the transaction completing, when everything is done
+//   transaction.oncomplete = function () {
+//     console.log('Transaction completed: database modification finished.');
 
-    // // update the display of data to show the newly added item, by running displayData() again.
-    // displayData();
-  };
+//     // update the display of data to show the newly added item, by running displayData() again.
+//     // displayData();
+//   };
 
-  transaction.onerror = function () {
-    console.log(`Transaction not opened due to error: ${transaction.error}`);
-  };
+//   transaction.onerror = function () {
+//     console.log(`Transaction not opened due to error: ${transaction.error}`);
+//   };
 
-  // call an object store that's already been added to the database
-  const objectStore = transaction.objectStore('match-match-DB');
-  console.log(objectStore.indexNames);
-  console.log(objectStore.keyPath);
-  console.log(objectStore.name);
-  console.log(objectStore.transaction);
-  console.log(objectStore.autoIncrement);
+//   // call an object store that's already been added to the database
+//   const objectStore = transaction.objectStore('match-match-DB');
+//   console.log(objectStore.indexNames);
+//   console.log(objectStore.keyPath);
+//   console.log(objectStore.name);
+//   console.log(objectStore.transaction);
+//   console.log(objectStore.autoIncrement);
 
-  // Make a request to add our new user object to the object store
-  const objectStoreRequest = objectStore.add(newUser[0]);
-  objectStoreRequest.onsuccess = function () {
-    // report the success of our request
-    // (to detect whether it has been succesfully
-    // added to the database, you'd look at transaction.oncomplete)
-    console.log('Request successful.');
+//   // Make a request to add our new user object to the object store
+//   const objectStoreRequest = objectStore.add(newUser[0]);
+//   objectStoreRequest.onsuccess = function () {
+//     // report the success of our request
+//     // (to detect whether it has been succesfully
+//     // added to the database, you'd look at transaction.oncomplete)
+//     console.log('Request successful.');
 
-    // clear the form, ready for adding the next entry
-    // firstName = '';
-    //   lastName = '';
-    //   email = '';
-    //   score = 0;
-  };
-}
+//     // clear the form, ready for adding the next entry
+//    newUser = [
+//   {
+//     name: '',
+//     lastName: '',
+//     email: '',
+//     score: 0,
+//   },
+// ];
+//   };
+// }
