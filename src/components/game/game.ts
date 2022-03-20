@@ -4,8 +4,7 @@ import delay from '../../common/delay';
 import BaseComponent from '../baseComponent';
 import Card from '../card/card';
 import CardsField from '../cardsField/cardsField';
-
-import ImageCategory from '../../models/imageCategory';
+import { ImageCategory } from '../../common/interfaces';
 import {
   FILTER_RED,
   FILTER,
