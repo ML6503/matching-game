@@ -1,6 +1,6 @@
 a {
   text-decoration: none;
-  color:#FFFFFFB2;
+  color: #ffffffb2;
   cursor: pointer;
 }
 
@@ -18,8 +18,7 @@ a {
   text-transform: capitalize;
   text-align: center;
   font-size: 0.6rem;
-  color:#FFFFFFB2;
-
+  color: #ffffffb2;
 }
 
 .game-detail {
@@ -27,9 +26,8 @@ a {
   height: 3.7rem;
 }
 
-
 .game-detail,
-.game-detail a{
+.game-detail a {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,4 +35,6 @@ a {
   text-align: center;
 }
 
-
+.active-router {
+  background-color: #1e88e5;
+}

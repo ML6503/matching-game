@@ -4,6 +4,11 @@ import BaseComponent from '../baseComponent';
 export default class GameDetails extends BaseComponent {
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['game-details-container']);
+    let scoreRouter = null;
+    window.addEventListener('score', (e: CustomEvent) => {
+      console.log('best score page', e.detail);
+      scoreRouter = 'active-router';
+    });
 
     this.node.innerHTML = `
     <nav class="game-details">
@@ -18,7 +23,7 @@ export default class GameDetails extends BaseComponent {
           <span class="text">about game</span>
         </a>
       </div>
-      <div class="game-detail best-score" id="2">
+      <div class="game-detail best-score ${scoreRouter}" id="2">
         <a href="#scores">
           <span class="icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
