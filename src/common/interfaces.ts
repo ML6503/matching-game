@@ -10,3 +10,8 @@ export interface IPlayer {
   playerEmail: string;
   time: number;
 }
+
+export interface ITime {
+  minutes: number;
+  seconds: number;
+}

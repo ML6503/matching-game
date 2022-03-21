@@ -44,11 +44,8 @@ export default class Timer extends BaseComponent {
   }
 
   async startTimer(): Promise<void> {
-    console.log('we are in startTimer');
     await delay(TIMER_START_DELAY);
     this.interval = setInterval(() => {
-      // this.element.innerHTML = this.minute+"mins "+  this.second+"secs";
-
       this.second++;
       if (this.second === 60) {
         this.minute++;
@@ -56,8 +53,7 @@ export default class Timer extends BaseComponent {
       }
       this.setTotalTime(this.minute, this.second);
       // this.second === TIMER_START_DELAY && this.stopTimer();
-      console.log('this.second', this.second);
-      console.log('time sec', this.getTotalTime().seconds);
+
       this.node.innerHTML = `
       <div class="timer">
         <span class="minutes" >${this.minute}</span>

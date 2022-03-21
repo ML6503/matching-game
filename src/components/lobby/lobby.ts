@@ -8,9 +8,9 @@ export default class Lobby extends BaseComponent {
 
   private game: Game;
 
-  // public isStarted: boolean
-
   private table: BaseComponent;
+
+  private tableWrapper: BaseComponent;
 
   public onStartTimer: () => void;
 
@@ -24,11 +24,12 @@ export default class Lobby extends BaseComponent {
 
         return isStarted;
       };
-      console.log('IsSTARTED ', isStarted);
+
       this.game = new Game(this.table.node, isStarted, setStarted);
       this.game.newGame();
     };
     this.header = new Header(this.node, this.onStartTimer);
-    this.table = new BaseComponent(this.node, 'div', ['table-wrapper']);
+    this.tableWrapper = new BaseComponent(this.node, 'div', ['table-wrapper']);
+    this.table = new BaseComponent(this.tableWrapper.node, 'div', ['game-table']);
   }
 }

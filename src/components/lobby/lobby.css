@@ -32,7 +32,7 @@
 /* Modal Content/Box */
 .modal-content {
   background-color: #ffffff;
-  margin: 45% auto; /* 45% from the top and centered */
+  margin: 40% auto; /* 45% from the top and centered */
   padding: 1rem 1rem 0.2rem;
   width: 30%;
   font-family: 'Roboto';

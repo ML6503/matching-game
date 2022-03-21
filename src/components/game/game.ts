@@ -4,27 +4,17 @@ import delay from '../../common/delay';
 import BaseComponent from '../baseComponent';
 import Card from '../card/card';
 import CardsField from '../cardsField/cardsField';
-import { ImageCategory } from '../../common/interfaces';
-import {
-  FILTER_RED,
-  FILTER,
-  FLIP_DELAY,
-  FILTER_GREEN,
-} from '../../common/constants';
+import { ImageCategory, ITime } from '../../common/interfaces';
+import { FILTER_RED, FLIP_DELAY, FILTER_GREEN } from '../../common/constants';
 import Timer from '../timer/timer';
 // import Button from '../button';
 import RoundEndModal from '../roundEnd/roundEnd';
 
+const CARDS_NUMBER = 6;
 export default class Game extends BaseComponent {
   private readonly cardsField: CardsField;
 
-  // private overlay: BaseComponent;
-
   private roundEndModal: BaseComponent;
-
-  // private modalButton: Button;
-
-  // private roundEndMessage: BaseComponent;
 
   private timer: Timer;
 
@@ -47,12 +37,8 @@ export default class Game extends BaseComponent {
     isStarted: boolean,
     setStarted: (arg0: boolean) => typeof arg0,
   ) {
-    super(parentNode, 'div', ['game-table']);
-    // this.overlay = new BaseComponent(this.node, 'div', ['overlay']);
-
+    super(parentNode, 'div', ['game-inner-table']);
     this.cardsField = new CardsField(this.node);
-
-    console.log('we start timer');
     this.timer = !isStarted && new Timer(this.cardsField.node, setStarted);
     this.timer.startTimer();
     this.numberOfSuccessTries = 0;
@@ -60,17 +46,21 @@ export default class Game extends BaseComponent {
   }
 
   async newGame(): Promise<void> {
-    const res = await fetch('../../../public/images.json');
+    const res = await fetch('../../../public/imagesAll.json');
 
     const categories: ImageCategory[] = await res.json();
     const cat = categories[0];
 
-    const images = cat.images.map((n) => `${cat.category}/${n}`);
+    const images = cat.images
+      .map((n) => `${cat.category}/${n}`)
+      .sort(() => Math.random() - 0.5)
+      .slice(0, CARDS_NUMBER / 2);
+
     this.cardsField.clear();
+
     const cards = images
       .concat(images)
-      .map((imgUrl) => new Card(this.cardsField.node, imgUrl))
-      .sort(() => Math.random() - 0.5);
+      .map((imgUrl) => new Card(this.cardsField.node, imgUrl));
 
     cards.forEach((c) => {
       c.node.addEventListener('click', () => this.cardHandler(c));
@@ -108,39 +98,28 @@ export default class Game extends BaseComponent {
       return;
     }
     if (this.activeCard.image !== card.image) {
-      //  TODO RED FILTER
-      // this.activeCard.showError();
-      this.activeCard.node.classList.add(FILTER);
-      this.activeCard.node.classList.add(FILTER_RED);
-      card.node.classList.add(FILTER_RED, FILTER);
-      card.node.classList.add(FILTER);
+      this.activeCard.addFilter(FILTER_RED);
+      card.addFilter(FILTER_RED);
       await delay(FLIP_DELAY);
-      this.activeCard.node.classList.remove(FILTER_RED);
-      this.activeCard.node.classList.remove(FILTER);
-      card.node.classList.remove(FILTER_RED);
-      card.node.classList.remove(FILTER);
+      this.activeCard.removeFilter(FILTER_RED);
+      card.removeFilter(FILTER_RED);
       await Promise.all([this.activeCard.flipBack(), card.flipBack()]);
     }
 
     if (this.activeCard.image === card.image) {
-      this.activeCard.node.classList.add(FILTER_GREEN);
-      this.activeCard.node.classList.add(FILTER);
-      card.node.classList.add(FILTER_GREEN);
-      card.node.classList.add(FILTER);
+      this.activeCard.addFilter(FILTER_GREEN);
+      card.addFilter(FILTER_GREEN);
       this.incrementTotalSuccesTries();
     }
 
     this.incrementTotalNumberOfTries();
-    // clear activeCard
-    // this.activeCard = undefined;
     this.activeCard = null;
     this.isAnimation = false;
 
     if (this.getNumberOfSuccesTries() === this._totalCardsPair) {
-      // this.overlay.node.style.display = 'block';
       this.timer.pauseTimer();
       const totalTime = this.timer.getTotalTime();
-      console.log('Total time', totalTime);
+
       this.roundEndModal = new RoundEndModal(this.node, totalTime);
     }
   }
@@ -161,7 +140,14 @@ export default class Game extends BaseComponent {
     this.numberOfSuccessTries += 1;
   }
 
-  // stopGame() {
-  //   this.cardsField.clear();
-  // }
+  private getTotalScore(totalTime: ITime) {
+    const wrongTries = this.getNumberOfTries() - this.getNumberOfSuccesTries();
+    const totalTimeInSeconds = totalTime.minutes * 60 + totalTime.seconds;
+
+    return (this.getNumberOfTries() - wrongTries) * 100 - totalTimeInSeconds * 10;
+  }
+
+  stopGame(): void {
+    this.destroy();
+  }
 }

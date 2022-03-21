@@ -1,3 +1,4 @@
+import { ITime } from '../../common/interfaces';
 import BaseComponent from '../baseComponent';
 import Button from '../button';
 
@@ -8,10 +9,7 @@ export default class RoundEndModal extends BaseComponent {
 
   public modalButton: Button;
 
-  constructor(
-    parentNode: HTMLElement,
-    totalTime: { minutes: number; seconds: number },
-  ) {
+  constructor(parentNode: HTMLElement, totalTime: ITime) {
     super(parentNode, 'div', ['overlay']);
     // this.roundEndModal = new BaseComponent(this.overlay.node, 'div', [
     //   'modal-content',
@@ -22,7 +20,7 @@ export default class RoundEndModal extends BaseComponent {
       this.roundEndPopup.node,
       'p',
       ['round-end-message'],
-      `Congratulations! You successfully found all matches on ${totalTime.minutes}.${totalTime.seconds} minutes.`,
+      `Congratulations! You successfully found all matches in ${totalTime.minutes}.${totalTime.seconds} minutes.`,
     );
     this.modalButton = new Button(this.roundEndPopup.node, 'modal-close', 'ok');
     this.modalButton.onClick = () => {
