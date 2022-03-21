@@ -7,9 +7,10 @@ export default class Scores extends BaseComponent {
 
   private readonly scoresHeading: Heading;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, score: number) {
     super(parentNode, 'section', ['scores-main-container']);
     this.scoresHeading = new Heading(this.node, 'h6', 'scores', 'Best Players');
     this.scoresWrapper = new Wrapper(this.node, 'scores');
+    console.log('BEST SCORES and current is', score);
   }
 }

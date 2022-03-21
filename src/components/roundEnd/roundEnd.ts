@@ -9,7 +9,7 @@ export default class RoundEndModal extends BaseComponent {
 
   public modalButton: Button;
 
-  constructor(parentNode: HTMLElement, totalTime: ITime) {
+  constructor(parentNode: HTMLElement, totalTime: ITime, totalScore: number) {
     super(parentNode, 'div', ['overlay']);
     // this.roundEndModal = new BaseComponent(this.overlay.node, 'div', [
     //   'modal-content',
@@ -25,6 +25,8 @@ export default class RoundEndModal extends BaseComponent {
     this.modalButton = new Button(this.roundEndPopup.node, 'modal-close', 'ok');
     this.modalButton.onClick = () => {
       this.node.style.display = 'none';
+      const scoreSent = new CustomEvent('score', { detail: totalScore });
+      dispatchEvent(scoreSent);
     };
   }
 }

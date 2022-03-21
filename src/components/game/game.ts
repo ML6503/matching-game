@@ -120,7 +120,11 @@ export default class Game extends BaseComponent {
       this.timer.pauseTimer();
       const totalTime = this.timer.getTotalTime();
 
-      this.roundEndModal = new RoundEndModal(this.node, totalTime);
+      this.roundEndModal = new RoundEndModal(
+        this.node,
+        totalTime,
+        this.getTotalScore(totalTime),
+      );
     }
   }
 
@@ -140,7 +144,7 @@ export default class Game extends BaseComponent {
     this.numberOfSuccessTries += 1;
   }
 
-  private getTotalScore(totalTime: ITime) {
+  private getTotalScore(totalTime: ITime): number {
     const wrongTries = this.getNumberOfTries() - this.getNumberOfSuccesTries();
     const totalTimeInSeconds = totalTime.minutes * 60 + totalTime.seconds;
 
