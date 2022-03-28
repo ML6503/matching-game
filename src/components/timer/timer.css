@@ -1,29 +1,30 @@
 .timer-wrapper {
-  margin-top: 1.5rem;
   font-family: 'Roboto';
   font-size: 1.8rem;
-  background-color: #ffffff;
-  /* border: solid rgba(0, 0, 0, 0.24) 0.2rem ; */
-  /* border: 0.05rem solid; */
+  width: 10vw;
+  min-width: 4rem;
+  display: flex;
+  align-items: center;
+  /* background-color: #ffffff;
   border-radius: 0.2rem;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.24);
-  /* box-shadow:  0 0.2rem #E5E5E5; */
-  /* color: #e5e5e5; */
-  color: rgba(0, 0, 0, 0.4);
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  color: rgba(0, 0, 0, 0.4); */
 }
 
 .timer {
   width: 100%;
   height: 100%;
-  padding: 0 2rem 0.5rem;
-  /* display: flex;
+  /* padding: 0 2rem 0.5rem; */
+  padding: 2% 25%;
+  background-color: #ffffff;
+  border-radius: 0.2rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.24);
+  color: rgba(0, 0, 0, 0.4);
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 
 .separator {
-  width: 5%;
+  padding: 0 5%;
 }

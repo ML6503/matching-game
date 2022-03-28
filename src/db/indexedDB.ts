@@ -24,7 +24,7 @@ export default class DataBase {
       store.createIndex('firstName', 'firstName');
       store.createIndex('lastName', 'lastName');
       store.createIndex('email', 'email');
-      store.createIndex('time', 'time');
+      store.createIndex('score', 'score');
       this.db = database;
     };
 
@@ -117,7 +117,10 @@ export default class DataBase {
   }
 
   // writeTime(playerId: number, playerTime: number, name?: string): Promise<> {
-  writeTime(playerId: number, playerTime: number): Promise<IDBTransaction | number> {
+  writeScore(
+    playerId: number,
+    playerScore: number,
+  ): Promise<IDBTransaction | number> {
     return new Promise((res, rej) => {
       const transaction = this.db.transaction('matchPlayers', 'readwrite');
 
@@ -125,15 +128,15 @@ export default class DataBase {
 
       // to amend item in db
       // store.put({ id: 2, name: 'nameTWO sample', score:  50 });
-      const result = store.put({ id: playerId, time: playerTime });
+      const result = store.put({ id: playerId, score: playerScore });
 
       result.onsuccess = () => {
-        console.log(`complete adding player time = '${playerTime}'`, result.result);
+        console.log(`complete adding player time = '${playerScore}'`, result.result);
       };
 
       transaction.oncomplete = () => {
         console.log('complete');
-        res(playerTime);
+        res(playerScore);
       };
 
       transaction.onerror = (e) => rej(console.log('DB error', e.target));

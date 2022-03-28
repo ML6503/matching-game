@@ -5,10 +5,11 @@ export interface ImageCategory {
 
 export interface IPlayer {
   id: number;
+  ava?: string;
   playerFirstName: string;
   playerLastName: string;
   playerEmail: string;
-  time: number;
+  score: number;
 }
 
 export interface ITime {

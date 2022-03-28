@@ -2,6 +2,7 @@
   padding: 1%;
   margin: 1%;
   flex: 1 0 20%;
+  /* flex: 0 1 25%; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -9,21 +10,29 @@
   cursor: pointer;
 }
 
-.card-container:hover > .card {
+/* .card-container:hover > .card {
   transform: translateZ(2rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-}
+} */
+
 .flipped .card {
   transform: rotateY(180deg) translateX(-100%);
   transform-origin: left;
 }
 
+/* .flipped .card-container {
+  transform: rotateY(180deg) translateX(-100%);
+  transform-origin: left;
+} */
+
 .card {
   position: relative;
-  width: 8.4rem;
-  height: 8.4rem;
   width: 12vw;
   height: 12vw;
+  /* width: 8.4rem;
+  height: 8.4rem; */
+  /* width: 12vw;
+  height: 12vw; */
   transform-style: preserve-3d;
   transform-origin: right;
   transition: all 0.5s;
@@ -60,13 +69,17 @@
   background-position: center;
   background-repeat: no-repeat;
   transform: rotateY(180deg);
-  width: 8.4rem;
-  height: 8.4rem;
+  /* width: 8.4rem;
+  height: 8.4rem; */
+  width: 12vw;
+  height: 12vw;
 }
 
 .card-size {
-  width: 8.4rem;
-  height: 8.4rem;
+  /* width: 8.4rem;
+  height: 8.4rem; */
+  width: 12vw;
+  height: 12vw;
 }
 
 .filter {

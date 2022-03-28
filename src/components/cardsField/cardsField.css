@@ -1,6 +1,7 @@
 .cards-field {
-  height: 75vh;
-  /* width: 80%; */
+  /* height: 80vh; */
+  padding: 5% 0;
+  /* width: 85vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +11,9 @@
 }
 
 .cards-wrapper {
-  padding: 5% 10% 5%;
+  /* padding: 5% 10% 5%; */
+  /* padding-top: 5%; */
+  padding-top: 15%;
   display: flex;
   align-items: center;
   justify-content: center;

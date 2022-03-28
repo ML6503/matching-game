@@ -15,7 +15,7 @@ export default class RoundEndModal extends BaseComponent {
     //   'modal-content',
     // ]);
     this.roundEndPopup = new BaseComponent(this.node, 'div', ['modal-content']);
-    this.node.style.display = 'block';
+    // this.node.style.display = 'block';
     this.roundEndMessage = new BaseComponent(
       this.roundEndPopup.node,
       'p',

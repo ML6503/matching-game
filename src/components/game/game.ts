@@ -50,16 +50,18 @@ export default class Game extends BaseComponent {
 
     const categories: ImageCategory[] = await res.json();
     const cat = categories[0];
+    const randomSort = () => Math.random() - 0.5;
 
     const images = cat.images
       .map((n) => `${cat.category}/${n}`)
-      .sort(() => Math.random() - 0.5)
+      .sort(() => randomSort())
       .slice(0, CARDS_NUMBER / 2);
 
     this.cardsField.clear();
 
     const cards = images
       .concat(images)
+      .sort(() => randomSort())
       .map((imgUrl) => new Card(this.cardsField.node, imgUrl));
 
     cards.forEach((c) => {
@@ -101,9 +103,12 @@ export default class Game extends BaseComponent {
       this.activeCard.addFilter(FILTER_RED);
       card.addFilter(FILTER_RED);
       await delay(FLIP_DELAY);
+
+      await Promise.all([this.activeCard.flipBack(), card.flipBack()]);
       this.activeCard.removeFilter(FILTER_RED);
       card.removeFilter(FILTER_RED);
-      await Promise.all([this.activeCard.flipBack(), card.flipBack()]);
+      console.log('çard after red filter', card);
+      console.log('el of card after red f ', card.node);
     }
 
     if (this.activeCard.image === card.image) {

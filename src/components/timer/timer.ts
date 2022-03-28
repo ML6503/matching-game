@@ -9,6 +9,8 @@ export default class Timer extends BaseComponent {
 
   private minute!: number;
 
+  private displayedSecond: string | number;
+
   public totalTime!: {
     minutes: number;
     seconds: number;
@@ -51,6 +53,9 @@ export default class Timer extends BaseComponent {
         this.minute++;
         this.second = 0;
       }
+      this.second < 10
+        ? (this.displayedSecond = `0${this.second}`)
+        : (this.displayedSecond = this.second);
       this.setTotalTime(this.minute, this.second);
       // this.second === TIMER_START_DELAY && this.stopTimer();
 
@@ -58,7 +63,7 @@ export default class Timer extends BaseComponent {
       <div class="timer">
         <span class="minutes" >${this.minute}</span>
         <span class="separator" >:</span>
-        <span class="seconds">${this.second}</span>
+        <span class="seconds">${this.displayedSecond}</span>
       </div>
     `;
     }, 1000);
