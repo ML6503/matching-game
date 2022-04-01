@@ -1,9 +1,10 @@
-import '../cardsField/cardsField.css';
+// import '../cardsField/cardsField.css';
 import './scores.css';
 import BaseComponent from '../baseComponent';
 import Heading from '../heading';
 import Wrapper from '../wrapper';
 import { IPlayer } from '../../common/interfaces';
+import PlayerScore from './playerScore';
 
 const players: IPlayer[] = [
   {

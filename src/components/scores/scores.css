@@ -27,3 +27,9 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+
+.player-scores-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
