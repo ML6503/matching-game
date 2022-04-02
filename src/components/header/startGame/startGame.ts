@@ -1,5 +1,5 @@
 import './startGame.css';
-import Ava from '../../ava';
+import Ava from '../../ava/ava';
 import BaseComponent from '../../baseComponent';
 import Button from '../../button';
 import Wrapper from '../../wrapper';

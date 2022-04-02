@@ -9,10 +9,19 @@ import PlayerScore from './playerScore';
 const players: IPlayer[] = [
   {
     id: 0,
+    ava: '',
     playerFirstName: 'FirstName',
     playerLastName: 'LastName',
     playerEmail: 'email@com',
     score: 0,
+  },
+
+  {
+    id: 1,
+    playerFirstName: '2nd Player FirstName',
+    playerLastName: '2nd player LastName',
+    playerEmail: '2nd player email@com',
+    score: 10,
   },
 ];
 export default class Scores extends BaseComponent {
