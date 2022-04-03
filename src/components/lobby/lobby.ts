@@ -17,6 +17,8 @@ export default class Lobby extends BaseComponent {
 
   public onStartTimer: () => void;
 
+  public onStopGame: () => void;
+
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['lobby']);
 
@@ -36,7 +38,8 @@ export default class Lobby extends BaseComponent {
       console.log('lobby go to score', e.detail);
       this.bestScores = new Scores(this.table.node, e.detail);
     });
-    this.header = new Header(this.node, this.onStartTimer);
+    this.onStopGame = () => this.game.stopGame();
+    this.header = new Header(this.node, this.onStartTimer, this.onStopGame);
     this.tableWrapper = new BaseComponent(this.node, 'div', ['table-wrapper']);
     this.table = new BaseComponent(this.tableWrapper.node, 'div', ['game-table']);
   }

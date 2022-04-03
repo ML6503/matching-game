@@ -11,13 +11,17 @@ export default class Header extends BaseComponent {
 
   private readonly startGame: StartGame;
 
-  constructor(parentNode: HTMLElement, onStartTimer: () => void) {
+  constructor(
+    parentNode: HTMLElement,
+    onStartTimer: () => void,
+    onStopGame: () => void,
+  ) {
     super(parentNode, 'div', ['header-container']);
     this.logo = new Logo(this.node);
     // this.element.appendChild(this.logo.element);
     this.gameDetails = new GameDetails(this.node);
     // this.element.appendChild(this.gameDetails.element);
-    this.startGame = new StartGame(this.node, onStartTimer);
+    this.startGame = new StartGame(this.node, onStartTimer, onStopGame);
     // this.element.appendChild(this.startGame.element);
   }
 }
