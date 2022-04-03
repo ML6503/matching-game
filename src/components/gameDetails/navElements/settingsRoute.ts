@@ -10,7 +10,7 @@ export default class AboutGame extends BaseComponent {
     this.node.setAttribute('id', '3');
     this.aboutNav = new SpanIcon(
       this.node,
-      '#settings',
+      'settings',
       SettingsIcon,
       'game settings',
     );

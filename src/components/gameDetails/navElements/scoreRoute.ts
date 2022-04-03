@@ -13,6 +13,6 @@ export default class ScoreRoute extends BaseComponent {
 
       this.node.classList.add('active-router');
     });
-    this.scoreNav = new SpanIcon(this.node, '#scores', ScoreIcon, 'best score');
+    this.scoreNav = new SpanIcon(this.node, 'scores', ScoreIcon, 'best score');
   }
 }
