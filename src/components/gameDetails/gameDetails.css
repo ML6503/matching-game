@@ -1,7 +1,21 @@
-a {
+/* a {
   text-decoration: none;
   color: #ffffffb2;
   cursor: pointer;
+}
+*/
+button,
+button:focus {
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+button:active {
+  outline: none;
+  background: transparent;
+  border: 1px solid grey;
 }
 
 .game-details-container {
@@ -17,17 +31,15 @@ a {
   align-items: center;
   text-transform: capitalize;
   text-align: center;
-  font-size: 0.6rem;
-  color: #ffffffb2;
 }
 
 .game-detail {
-  width: 30%;
+  width: 100%;
   height: 3.7rem;
 }
 
 .game-detail,
-.game-detail a {
+.game-detail button {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,4 +50,12 @@ a {
 .active-router {
   /* background-color: #1e88e5; */
   background-color: #2f80ed;
+}
+
+.text-nav {
+  font-size: 0.6rem;
+  color: #ffffffb2;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 400;
 }
