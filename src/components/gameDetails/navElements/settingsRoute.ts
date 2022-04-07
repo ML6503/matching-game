@@ -5,7 +5,7 @@ import SpanIcon from './spanIcon';
 export default class AboutGame extends BaseComponent {
   private aboutNav: SpanIcon;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, onNavClick: (arg: string) => void) {
     super(parentNode, 'div', ['game-detail', 'game-settings']);
     this.node.setAttribute('id', '3');
     this.aboutNav = new SpanIcon(
@@ -13,6 +13,7 @@ export default class AboutGame extends BaseComponent {
       'settings',
       SettingsIcon,
       'game settings',
+      onNavClick,
     );
   }
 }

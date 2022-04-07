@@ -13,11 +13,11 @@ export default class GameDetails extends BaseComponent {
 
   private settingsRoute: SettingsRoute;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, onNavClick: (arg: string) => void) {
     super(parentNode, 'div', ['game-details-container']);
     this.headerRouter = new BaseComponent(this.node, 'nav', ['game-details']);
-    this.aboutGameRoute = new AboutGame(this.headerRouter.node);
-    this.scoreRoute = new ScoreRoute(this.headerRouter.node);
-    this.settingsRoute = new SettingsRoute(this.headerRouter.node);
+    this.aboutGameRoute = new AboutGame(this.headerRouter.node, onNavClick);
+    this.scoreRoute = new ScoreRoute(this.headerRouter.node, onNavClick);
+    this.settingsRoute = new SettingsRoute(this.headerRouter.node, onNavClick);
   }
 }

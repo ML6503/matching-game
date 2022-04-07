@@ -5,7 +5,7 @@ import SpanIcon from './spanIcon';
 export default class ScoreRoute extends BaseComponent {
   private scoreNav: SpanIcon;
 
-  constructor(parentNode: HTMLElement) {
+  constructor(parentNode: HTMLElement, onNavClick: (arg: string) => void) {
     super(parentNode, 'div', ['game-detail', 'best-score']);
     this.node.setAttribute('id', '2');
     window.addEventListener('score', (e: CustomEvent) => {
@@ -13,6 +13,12 @@ export default class ScoreRoute extends BaseComponent {
 
       this.node.classList.add('active-router');
     });
-    this.scoreNav = new SpanIcon(this.node, 'scores', ScoreIcon, 'best score');
+    this.scoreNav = new SpanIcon(
+      this.node,
+      'scores',
+      ScoreIcon,
+      'best score',
+      onNavClick,
+    );
   }
 }

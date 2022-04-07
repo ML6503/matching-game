@@ -6,3 +6,6 @@ export const FILTER = 'filter';
 export const FLIP_CLASS = 'flipped';
 export const START_GAME = 'start game';
 export const STOP_GAME = 'stop game';
+export const ABOUT_GAME = 'about game';
+export const BEST_SCORE = 'best score';
+export const GAME_SETTINGS = 'game settings';

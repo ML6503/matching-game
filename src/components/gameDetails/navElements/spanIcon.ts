@@ -13,11 +13,13 @@ export default class SpanIcon extends Button {
     className: string,
     iconImage: string,
     text: string,
+    onNavClick: (arg: string) => void,
   ) {
     super(parentNode, className, '');
 
     this.span = new BaseComponent(this.node, 'span', ['icon']);
     this.span.node.innerHTML = `${iconImage}`;
     this.spanText = new BaseComponent(this.node, 'span', ['text-nav'], text);
+    this.onClick = () => onNavClick(text);
   }
 }

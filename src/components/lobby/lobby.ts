@@ -3,6 +3,7 @@ import BaseComponent from '../baseComponent';
 import Game from '../game/game';
 import Header from '../header/header';
 import Scores from '../scores/scores';
+import { ABOUT_GAME, BEST_SCORE, GAME_SETTINGS } from '../../common/constants';
 
 export default class Lobby extends BaseComponent {
   private readonly header: Header;
@@ -38,8 +39,13 @@ export default class Lobby extends BaseComponent {
       console.log('lobby go to score', e.detail);
       this.bestScores = new Scores(this.table.node, e.detail);
     });
-    // this.onStopGame = () => this.game.stopGame();
-    this.header = new Header(this.node, this.onStartTimer, this.onStopGame);
+
+    this.header = new Header(
+      this.node,
+      this.onStartTimer,
+      this.onStopGame,
+      this.onNavClick,
+    );
     this.tableWrapper = new BaseComponent(this.node, 'div', ['table-wrapper']);
     this.table = new BaseComponent(this.tableWrapper.node, 'div', ['game-table']);
   }
@@ -54,5 +60,29 @@ export default class Lobby extends BaseComponent {
     this.game.stopGame();
     this.game = null;
     this.removeAllChildNodes(this.table.node);
+  };
+
+  onAboutGame(): void {
+    console.log('GO ABOUT');
+  }
+
+  onScore(): void {
+    console.log('GO SCORES');
+  }
+
+  onSettings(): void {
+    console.log('GO SETTINGS');
+  }
+
+  onNavClick = (navBtnName: string): void => {
+    if (navBtnName === ABOUT_GAME) {
+      this.onAboutGame();
+    }
+    if (navBtnName === BEST_SCORE) {
+      this.onScore();
+    }
+    if (navBtnName === GAME_SETTINGS) {
+      this.onSettings();
+    }
   };
 }
