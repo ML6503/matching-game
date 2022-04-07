@@ -6,7 +6,8 @@
   justify-content: space-around;
 }
 
-.start-game-button {
+.start-game-button,
+.stop-game-button {
   font-family: Roboto;
   font-size: 0.7rem;
   font-style: normal;

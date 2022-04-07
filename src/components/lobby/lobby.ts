@@ -7,7 +7,7 @@ import Scores from '../scores/scores';
 export default class Lobby extends BaseComponent {
   private readonly header: Header;
 
-  private game: Game;
+  private game: Game | null;
 
   private table: BaseComponent;
 
@@ -17,7 +17,7 @@ export default class Lobby extends BaseComponent {
 
   public onStartTimer: () => void;
 
-  public onStopGame: () => void;
+  // public onStopGame: () => void;
 
   constructor(parentNode: HTMLElement) {
     super(parentNode, 'div', ['lobby']);
@@ -34,13 +34,25 @@ export default class Lobby extends BaseComponent {
       this.game.newGame();
     };
     window.addEventListener('score', (e: CustomEvent) => {
-      this.game.stopGame();
+      this.onStopGame();
       console.log('lobby go to score', e.detail);
       this.bestScores = new Scores(this.table.node, e.detail);
     });
-    this.onStopGame = () => this.game.stopGame();
+    // this.onStopGame = () => this.game.stopGame();
     this.header = new Header(this.node, this.onStartTimer, this.onStopGame);
     this.tableWrapper = new BaseComponent(this.node, 'div', ['table-wrapper']);
     this.table = new BaseComponent(this.tableWrapper.node, 'div', ['game-table']);
   }
+
+  removeAllChildNodes(parent: HTMLElement): void {
+    while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  }
+
+  onStopGame = (): void => {
+    this.game.stopGame();
+    this.game = null;
+    this.removeAllChildNodes(this.table.node);
+  };
 }

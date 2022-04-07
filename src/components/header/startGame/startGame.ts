@@ -8,6 +8,8 @@ import { START_GAME, STOP_GAME } from '../../../common/constants';
 export default class StartGame extends BaseComponent {
   private startGameButton: Button;
 
+  private stopGameButton: Button;
+
   private ava: Ava;
 
   private avaWrapper: Wrapper;
@@ -18,19 +20,30 @@ export default class StartGame extends BaseComponent {
     onStopGame: () => void,
   ) {
     super(parentNode, 'div', ['start-game-container']);
-    let buttonText = START_GAME;
-    this.startGameButton = new Button(this.node, 'start-game', buttonText);
+    let gameStart = false;
+    this.startGameButton = new Button(this.node, 'start-game', START_GAME);
+    this.stopGameButton = new Button(this.node, 'stop-game', STOP_GAME);
+    this.stopGameButton.node.style.display = 'none';
 
     this.startGameButton.onClick = () => {
-      onStartTimer();
-      buttonText = STOP_GAME;
-      this.startGameButton.node.textContent = buttonText;
-      // this.startGameButton.node.setAttribute ('disabled', '');
-    };
+      if (!gameStart) {
+        onStartTimer();
+        gameStart = !gameStart;
 
-    if (this.startGameButton.node.textContent === STOP_GAME) {
-      this.startGameButton.onClick = () => onStopGame();
-    }
+        this.startGameButton.node.style.display = 'none';
+        this.stopGameButton.node.style.display = 'block';
+      }
+
+      this.stopGameButton.onClick = () => {
+        if (gameStart) {
+          onStopGame();
+          gameStart = !gameStart;
+
+          this.startGameButton.node.style.display = 'block';
+          this.stopGameButton.node.style.display = 'none';
+        }
+      };
+    };
 
     this.avaWrapper = new Wrapper(this.node, 'ava');
 

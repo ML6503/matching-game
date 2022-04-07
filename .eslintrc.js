@@ -1,4 +1,4 @@
-'root:true'
+'root:true';
 
 module.exports = {
   env: {
@@ -22,10 +22,8 @@ module.exports = {
     'import/extensions': 'off',
     'no-empty-function': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-empty-function': [
-      'error',
-      { allow: ['arrowFunctions'] },
-    ],
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions'] }],
     'no-new': 'off',
     'no-use-before-define': 'off',
     'max-classes-per-file': ['error', 2],
@@ -45,4 +43,4 @@ module.exports = {
       },
     },
   },
-}
+};
