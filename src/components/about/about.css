@@ -40,8 +40,8 @@
 
 .step-descr-wrapper {
   display: flex;
-  align-items: center;
-  width: 48%;
+  padding: 0.8rem;
+  width: 54%;
   background-color: #ffffff;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .step-num-container {
-  padding: 1px;
+  padding: 0.5rem;
 }
 
 .step-icon {
@@ -72,7 +72,7 @@
 }
 
 .step-descr-container {
-  text-align: left;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .step-description {
