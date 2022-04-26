@@ -1,7 +1,7 @@
 .cards-field {
   height: 65vh;
   padding: 5% 0;
-  /* width: 85vw; */
+  width: 85vw;
   display: flex;
   flex-direction: column;
   align-items: center;
