@@ -9,9 +9,9 @@ import Step from './step';
 export default class About extends BaseComponent {
   private aboutWrapper: Wrapper;
 
-  private stepWrapper: Wrapper;
+  private readonly stepWrapper: Wrapper;
 
-  private stepsWrapper: Wrapper[];
+  private readonly stepsWrapper: Wrapper[];
 
   private readonly aboutHeading: Heading;
 

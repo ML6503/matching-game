@@ -1,6 +1,7 @@
 import BaseComponent from '../baseComponent';
 import Wrapper from '../wrapper';
 import './about.css';
+import Register from './register';
 
 export default class Step extends Wrapper {
   private stepNumberContainer: BaseComponent;
@@ -17,7 +18,7 @@ export default class Step extends Wrapper {
 
   private readonly stepDescription: BaseComponent;
 
-  private stepSampleContainer: BaseComponent;
+  private registerContainer: Register;
 
   constructor(parentNode: HTMLElement, id: number, text: string) {
     super(parentNode, 'step');
@@ -49,11 +50,7 @@ export default class Step extends Wrapper {
     );
     this.stepSampleWrapper = new Wrapper(this.node, 'step-sample');
     if (id === 1) {
-      this.stepSampleContainer = new BaseComponent(
-        this.stepSampleWrapper.node,
-        'div',
-        ['step-sample-container'],
-      );
+      this.registerContainer = new Register(this.stepSampleWrapper.node);
     }
   }
 }
